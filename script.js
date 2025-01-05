@@ -79,7 +79,8 @@ function clearCart() {
 
 // Lưu thông tin khách hàng
 function saveCustomerInfo() {
-    customerInfo.name = document.getElementById("customer-name").value;
+    customerInfo.name = document.getElement ```javascript
+    .getElementById("customer-name").value;
     customerInfo.address = document.getElementById("customer-address").value;
     customerInfo.phone = document.getElementById("customer-phone").value;
 
@@ -138,71 +139,3 @@ function markAsReceived() {
     // Cập nhật trạng thái đã nhận trên hệ thống
     alert("Người mua đã nhận hàng và hoàn thành đơn hàng!");
 }
-
-// Hàm hiển thị tab
-function showTab(tabId) {
-    // Kiểm tra xem người dùng đã đăng nhập chưa
-    if (!isLoggedIn) {
-        alert("Vui lòng đăng nhập trước.");
-        return;
-    }
-
-    // Hide all tab contents
-    var tabs = document.querySelectorAll('.tab-content');
-    tabs.forEach(tab => tab.style.display = 'none');
-
-    // Show the selected tab
-    document.getElementById(tabId).style.display = 'block';
-}
-
-// Function to handle login
-function handleLogin(event) {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    if (username && password) {
-        // Login successful
-        isLoggedIn = true;
-
-        // Ẩn form đăng nhập và hiển thị phần quy trình
-        document.getElementById('login-register').style.display = 'none';
-        document.getElementById('process-flow').style.display = 'block';
-
-        // Hiển thị tab "Người mua"
-        showTab('buyer');
-    } else {
-        alert('Vui lòng nhập đầy đủ thông tin đăng nhập.');
-    }
-}
-
-// Function to handle registration
-function handleRegister(event) {
-    event.preventDefault();
-    document.getElementById('register-form').style.display = 'none';
-    document.getElementById('login-register').style.display = 'none';
-    document.getElementById('process-flow').style.display = 'block';
-}
-// Function to handle registration
-function handleRegister(event) {
-    event.preventDefault();
-
-    const username = document.getElementById('register-username').value;
-    const password = document.getElementById('register-password').value;
-
-    if (username && password) {
-        // Đăng ký thành công, chuyển đến màn hình quy trình
-        isLoggedIn = true; // Giả sử đăng ký thành công, người dùng đã đăng nhập
-
-        // Ẩn form đăng ký và đăng nhập, hiển thị phần quy trình
-        document.getElementById('register-form').style.display = 'none';
-        document.getElementById('login-register').style.display = 'none';
-        document.getElementById('process-flow').style.display = 'block';
-
-        // Hiển thị tab "Người mua"
-        showTab('buyer');
-    } else {
-        alert('Vui lòng nhập đầy đủ thông tin đăng ký.');
-    }
-}
-
